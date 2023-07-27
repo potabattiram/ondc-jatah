@@ -11,7 +11,10 @@ app.get('/', (req,res) => {
 })
 
 app.post('/on_search', (req, res) => {
-    console.log(res);
+    console.log({
+      req: res,
+      res: res
+    });
     res.send('success');
 });
 
