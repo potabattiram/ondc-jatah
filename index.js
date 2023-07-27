@@ -6,6 +6,10 @@ const cors = require('cors');
 app.use(cors({
   origin: "*"
 }))
+app.get('/', (req,res) => {
+  res.send('ONDC-JATAH BE is Working Fine!')
+})
+
 app.post('/on_search', (req, res) => {
     console.log(res);
     res.send('success');
