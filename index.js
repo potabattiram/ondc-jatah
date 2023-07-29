@@ -1,23 +1,20 @@
-const express = require('express');
+const functions = require("firebase-functions");
+const express = require("express");
+const cors = require("cors");
 const app = express();
-const port = 3000; 
-const cors = require('cors');
 
+app.use(express.json()); // Parse incoming JSON data
 app.use(cors({
   origin: "*"
 }))
-app.get('/', (req,res) => {
-  res.send('ONDC-JATAH BE is Working Fine!')
-})
 
 app.post('/on_search', (req, res) => {
-    console.log({
-      req: res,
-      res: res
-    });
-    res.send('success');
+  console.log({
+    req: req.body,
+    res: 'success'
+  });
+  res.send('success');
 });
 
-app.listen(port || process.env.PORT, () => {
-  console.log(`Server listening at http://localhost:${port}`);
-});
+// Export the Express app as a Firebase Function
+exports.api = functions.https.onRequest(app);
